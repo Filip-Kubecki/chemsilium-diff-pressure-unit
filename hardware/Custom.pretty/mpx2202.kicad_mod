@@ -1,0 +1,163 @@
+(footprint "mpx2202"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "TSSOP8: plastic thin shrink small outline package; 8 leads; body width 3 mm; (see NXP SSOP-TSSOP-VSO-REFLOW.pdf and sot505-1_po.pdf)")
+	(tags "SSOP 0.65")
+	(property "Reference" "REF**"
+		(at 0 -2.55 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "5557087d-6543-46c3-892b-31540c7a943c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "mpx2202"
+		(at 0 0.03795 0)
+		(layer "F.Fab")
+		(uuid "78535aa7-c151-45d1-b965-20b926ced21d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e9ab56ea-5a1b-4c85-aa59-8972269245eb")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b7cd1f18-2167-4d56-ac98-3511b6aa013a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(clearance 0.2)
+	(attr smd)
+	(fp_rect
+		(start -6.4 -1.16205)
+		(end -4.4 1.23795)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "293095b0-d103-4d7d-a823-fdbe2b4f4d48")
+	)
+	(fp_rect
+		(start -4.3 -3.16205)
+		(end 4.3 3.23795)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "14b038d1-528b-49b5-9fbb-0e8f2b64c5ff")
+	)
+	(fp_rect
+		(start 4.2 -1.56205)
+		(end 6.2 1.63795)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "4c77545e-6257-459c-8193-da2edd305664")
+	)
+	(fp_circle
+		(center 0 0.03795)
+		(end 1.2 1.03795)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "692110be-0fdf-4e75-b2fc-7d90b68f5db3")
+	)
+	(fp_poly
+		(pts
+			(xy -5.15 -1.58705) (xy -5.39 -1.91705) (xy -4.91 -1.91705) (xy -5.15 -1.58705)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "bb00863a-2c4f-4029-ac19-da4d54767a88")
+	)
+	(pad "1" smd rect
+		(at -5.375 -0.93705)
+		(size 2 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e6abc280-6470-41c7-b6a0-d88fd5b5ec75")
+	)
+	(pad "2" smd rect
+		(at -5.375 -0.28705)
+		(size 2 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "81580667-b630-471f-854d-2b6b255890e2")
+	)
+	(pad "3" smd rect
+		(at -5.375 0.36295)
+		(size 2 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "14ae0e9b-8e42-4124-b10f-449cee724f4b")
+	)
+	(pad "4" smd rect
+		(at -5.375 1.01295)
+		(size 2 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "566ccce4-92ec-4d17-93d4-a4f44a241777")
+	)
+	(pad "5" smd rect
+		(at 5.2 0.03795 90)
+		(size 3.3 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b889bbd0-69b7-4ecb-b070-658a046d3083")
+	)
+	(group ""
+		(uuid "dbb31d16-c33c-44d4-a295-2c59c80854de")
+		(members "14ae0e9b-8e42-4124-b10f-449cee724f4b" "566ccce4-92ec-4d17-93d4-a4f44a241777"
+			"81580667-b630-471f-854d-2b6b255890e2" "e6abc280-6470-41c7-b6a0-d88fd5b5ec75"
+		)
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Package_SO.3dshapes/TSSOP-8_3x3mm_P0.65mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
