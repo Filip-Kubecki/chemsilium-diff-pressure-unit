@@ -1,0 +1,10 @@
+hardware/GERBER/
+hardware/*-backups/
+hardware/*.lck
+hardware/#*#
+hardware/_autosave-*
+hardware/fp-info-cache
+
+.DS_Store
+Thumbs.db
+.history/
