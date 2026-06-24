@@ -26,7 +26,7 @@
 /* ---- Configuration values (Bridge 0-20mV, Gain=64) ---- */
 #define ADS1220_REG0_CH1         0x0C  // MUX=AIN0-AIN1, Gain=64, PGA enabled
 #define ADS1220_REG0_CH2         0x5C  // MUX=AIN2-AIN3, Gain=64, PGA enabled
-#define ADS1220_REG1_VAL         0x40  // DR=010(90SPS), MODE=00(Normal), CM=0(Single-shot)
+#define ADS1220_REG1_VAL         0xC0  // DR=010(90SPS), MODE=00(Normal), CM=0(Single-shot)
 #define ADS1220_REG2_VAL         0x00  // Internal reference 2.048V, no filter
 #define ADS1220_REG3_VAL         0x00  // No IDAC
 
@@ -50,7 +50,6 @@ void ADS1220_WriteRegister(uint8_t reg, uint8_t value);
 uint8_t ADS1220_ReadRegister(uint8_t reg);
 
 int32_t ADS1220_ReadData(void);
-uint8_t ADS1220_IsDataReady(void);
 HAL_StatusTypeDef ADS1220_WaitForData(uint32_t timeout_ms);
 
 #endif /* ADS1220IPWR_H */

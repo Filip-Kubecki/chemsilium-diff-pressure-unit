@@ -114,7 +114,6 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_SPI1_Init();
-
   /* USER CODE BEGIN 2 */
 
   srand(HAL_GetTick());
@@ -132,23 +131,17 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-   int32_t raw_ch1 = 0, raw_ch2 = 0;
+    int32_t raw_ch1 = 0, raw_ch2 = 0;
 
     ADS1220_SelectChannel(ADS1220_CHANNEL_1);
-    ADS1220_StartSync();
-    HAL_Delay(15);
-    ADS1220_ReadData();
-    ADS1220_StartSync();
-    HAL_Delay(15);
-    raw_ch1 = ADS1220_ReadData();
+    if (ADS1220_WaitForData(20) == HAL_OK) {
+        raw_ch1 = ADS1220_ReadData();
+    }
 
     ADS1220_SelectChannel(ADS1220_CHANNEL_2);
-    ADS1220_StartSync();
-    HAL_Delay(15);
-    ADS1220_ReadData();
-    ADS1220_StartSync();
-    HAL_Delay(15);
-    raw_ch2 = ADS1220_ReadData();
+    if (ADS1220_WaitForData(20) == HAL_OK) {
+        raw_ch2 = ADS1220_ReadData();
+    }
 
     float voltage_ch1_mV = ADS1220_RawToVoltage_mV(raw_ch1);
     float voltage_ch2_mV = ADS1220_RawToVoltage_mV(raw_ch2);
@@ -156,14 +149,8 @@ int main(void)
     float pressure_ch1_Pa = ADS1220_VoltageToPressure_Pa(voltage_ch1_mV);
     float pressure_ch2_Pa = ADS1220_VoltageToPressure_Pa(voltage_ch2_mV);
 
-    // uint32_t debug_ch1 = ((uint32_t)debug_reg0 << 8) | debug_reg1; // REG0 w wyższym bajcie, REG1 w niższym
-    // uint32_t debug_ch2 = ((uint32_t)debug_reg2 << 8) | debug_reg3; // REG2/REG3 podobnie
-
-    // Send24BitPacket(debug_ch1, debug_ch2);
-    // HAL_Delay(500);
-
     Send24BitPacket((uint32_t)pressure_ch1_Pa, (uint32_t)pressure_ch2_Pa);
-    HAL_Delay(100);
+    HAL_Delay(1);
   }
   /* USER CODE END 3 */
 }
@@ -264,7 +251,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
+  huart2.Init.BaudRate = 57600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -303,9 +290,6 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SPI1_DRDY_GPIO_Port, SPI1_DRDY_Pin, GPIO_PIN_RESET);
-
   /*Configure GPIO pin : SPI1_CS_Pin */
   GPIO_InitStruct.Pin = SPI1_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -313,12 +297,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(SPI1_CS_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : SPI1_DRDY_Pin */
-  GPIO_InitStruct.Pin = SPI1_DRDY_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  /*Configure GPIO pin : PB0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(SPI1_DRDY_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
